@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "scanner": "Wraith",
+    "version": "1.0.0",
+    "scan_name": "Wraith Security Scan",
+    "target_url": "http://localhost:3000",
+    "timestamp": "2026-05-09T10:30:41.738316Z",
+    "total_findings": 3
+  },
+  "summary": {
+    "by_severity": {
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 0,
+      "info": 0
+    },
+    "by_phase": {
+      "auth": 3
+    },
+    "by_category": {
+      "authentication": 3
+    },
+    "risk_score": 11
+  },
+  "findings": [
+    {
+      "id": "16fd92aa-579",
+      "title": "Token Predictability: RS\u2192HS Algorithm Confusion Candidate",
+      "severity": "high",
+      "category": "authentication",
+      "description": "Token uses RS256. If the server accepts HS256 and uses the public key as the HMAC secret, an alg-confusion attack is possible.",
+      "evidence": {
+        "algorithm": "RS256",
+        "sample_tokens": [
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh..."
+        ],
+        "sample_size": 5
+      },
+      "cwe": 347,
+      "remediation": "Enforce a strict algorithm allowlist server-side. Never accept HS* if using RS*.",
+      "phase": "auth",
+      "tags": [
+        "token",
+        "predictability",
+        "entropy"
+      ],
+      "cwe_url": "https://cwe.mitre.org/data/definitions/347.html"
+    },
+    {
+      "id": "d49e49c8-e41",
+      "title": "Token Predictability: Low Entropy Variance Across Token Set",
+      "severity": "high",
+      "category": "authentication",
+      "description": "Entropy variance across 5 tokens is 0.0004. Tokens may be generated from a weak PRNG with predictable output.",
+      "evidence": {
+        "variance": 0.00039,
+        "entropies": [
+          5.7,
+          5.7,
+          5.664,
+          5.664,
+          5.664
+        ],
+        "sample_tokens": [
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh..."
+        ],
+        "sample_size": 5
+      },
+      "cwe": 335,
+      "remediation": "Use OS-level CSPRNG (secrets module, /dev/urandom).",
+      "phase": "auth",
+      "tags": [
+        "token",
+        "predictability",
+        "entropy"
+      ],
+      "cwe_url": "https://cwe.mitre.org/data/definitions/335.html"
+    },
+    {
+      "id": "b13d1ca6-a0f",
+      "title": "Token Predictability: JWT Missing Expiration (exp)",
+      "severity": "medium",
+      "category": "authentication",
+      "description": "Token has no expiry. Stolen tokens remain valid indefinitely.",
+      "evidence": {
+        "payload_keys": [
+          "status",
+          "data",
+          "iat"
+        ],
+        "sample_tokens": [
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh...",
+          "eyJ0eXAiOiJKV1QiLCJh..."
+        ],
+        "sample_size": 5
+      },
+      "cwe": 613,
+      "remediation": "Always set a short exp claim (\u226415 min for sensitive flows).",
+      "phase": "auth",
+      "tags": [
+        "token",
+        "predictability",
+        "entropy"
+      ],
+      "cwe_url": "https://cwe.mitre.org/data/definitions/613.html"
+    }
+  ]
+}

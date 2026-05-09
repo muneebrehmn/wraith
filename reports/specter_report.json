@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "scanner": "Wraith",
+    "version": "1.0.0",
+    "scan_name": "Wraith Security Scan",
+    "target_url": "https://target.com",
+    "timestamp": "2026-05-09T05:18:36.952744Z",
+    "total_findings": 0
+  },
+  "summary": {
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    "by_phase": {},
+    "by_category": {},
+    "risk_score": 0
+  },
+  "findings": []
+}
