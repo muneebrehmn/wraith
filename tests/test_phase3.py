@@ -1,5 +1,5 @@
 """
-specter/tests/test_phase3.py
+wraith/tests/test_phase3.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 3 tests — LogicTester (no real network)
 Run: python -m pytest tests/test_phase3.py -v

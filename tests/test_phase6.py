@@ -1,5 +1,5 @@
 """
-specter/tests/test_phase6.py
+wraith/tests/test_phase6.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 6 tests — Burp extension bundled logic
 Tests all check functions without needing Burp present.
@@ -18,7 +18,7 @@ from typing import List
 
 # Import from the extension directly (BURP_AVAILABLE will be False in test env)
 from burp_extension.authlogic_burp import (
-    BurpRequest, BurpResponse, SpecterScanRunner,
+    BurpRequest, BurpResponse, WraithScanRunner,
     check_jwt_none_alg, check_jwt_alg_confusion,
     check_post_logout_reuse, check_session_fixation,
     check_pw_change_invalidation, check_response_bypass,
@@ -344,7 +344,7 @@ class TestScanRunner:
         adapter = MockAdapter(route_fn=route)
         config  = dict(BASE_CONFIG)
 
-        runner = SpecterScanRunner(
+        runner = WraithScanRunner(
             adapter     = adapter,
             config      = config,
             on_finding  = lambda f: state["findings"].append(f),
@@ -365,7 +365,7 @@ class TestScanRunner:
             return mock_resp(200, json.dumps({"token": VALID_TOKEN}))
 
         adapter = MockAdapter(route_fn=route)
-        runner  = SpecterScanRunner(
+        runner  = WraithScanRunner(
             adapter     = MockAdapter(route_fn=route),
             config      = BASE_CONFIG,
             on_complete = lambda fs: state.update({"complete": True}),

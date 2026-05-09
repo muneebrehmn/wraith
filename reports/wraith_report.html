@@ -462,9 +462,9 @@
       </div>
 
       <div class="rpt-meta">
-        <div><strong>http://localhost:3000</strong></div>
-        <div>2026-05-09T10:30:41.738316Z</div>
-        <div>v1.0.0 &nbsp;&middot;&nbsp; 3 findings &nbsp;&middot;&nbsp; Risk: Moderate</div>
+        <div><strong>https://target.com</strong></div>
+        <div>2026-05-09T05:18:36.952744Z</div>
+        <div>v1.0.0 &nbsp;&middot;&nbsp; 0 findings &nbsp;&middot;&nbsp; Risk: None</div>
       </div>
 
     </div>
@@ -478,11 +478,11 @@
       <div class="lbl">critical</div>
     </div>
     <div class="sev-cell" onclick="filterBySev('high')" title="Show high">
-      <div class="num" style="color: var(--high);">2</div>
+      <div class="num" style="color: var(--high);">0</div>
       <div class="lbl">high</div>
     </div>
     <div class="sev-cell" onclick="filterBySev('medium')" title="Show medium">
-      <div class="num" style="color: var(--med);">1</div>
+      <div class="num" style="color: var(--med);">0</div>
       <div class="lbl">medium</div>
     </div>
     <div class="sev-cell" onclick="filterBySev('low')" title="Show low">
@@ -499,178 +499,22 @@
   <div class="filter-row">
     <span class="filter-label">Filter</span>
     <button class="filter-btn active" onclick="filterBySev('all')">All</button>
-    <button class="filter-btn" onclick="filterBySev('high')">high</button>
-    <button class="filter-btn" onclick="filterBySev('medium')">medium</button>
 
     
-    <span class="filter-label">Phase</span>
-    <button class="filter-btn" onclick="filterByPhase('auth')">auth</button>
-
   </div>
 
-  <div class="count-label">3 findings</div>
+  <div class="count-label">0 findings</div>
 
 
-  <div class="findings-list" id="findings-list">
-
-    <div class="fcard" id="card-16fd92aa-579" data-sev="high" data-phase="auth">
-
-      <div class="fcard-header bl-high" onclick="toggleCard('card-16fd92aa-579')">
-        <span class="sev-dot dot-high"></span>
-        <span class="sev-label">HIGH</span>
-        <span class="fcard-title">Token Predictability: RS→HS Algorithm Confusion Candidate</span>
-        <span class="fcard-phase">AUTH</span>
-        <span class="fcard-chevron" id="chev-card-16fd92aa-579">&#9660;</span>
-      </div>
-
-      <div class="fcard-body" id="body-card-16fd92aa-579">
-
-        <div class="fsection">
-          <div class="fsection-label">Description</div>
-          <div class="fdescription">Token uses RS256. If the server accepts HS256 and uses the public key as the HMAC secret, an alg-confusion attack is possible.</div>
-          
-        <a class="cwe-link" href="https://cwe.mitre.org/data/definitions/347.html" target="_blank">CWE-347 &nearr;</a>
-          
-        <div class="tag-list"><span class="tag">token</span><span class="tag">predictability</span><span class="tag">entropy</span></div>
-        </div>
-        
-      <div class="fsection">
-        <div class="fsection-label">Evidence</div>
-        <pre>{
-  &quot;algorithm&quot;: &quot;RS256&quot;,
-  &quot;sample_tokens&quot;: [
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;
-  ],
-  &quot;sample_size&quot;: 5
-}</pre>
-      </div>
-        
-        
-        
-      <div class="fsection">
-        <div class="fsection-label">Remediation</div>
-        <div class="fremediation">Enforce a strict algorithm allowlist server-side. Never accept HS* if using RS*.</div>
-      </div>
-
-      </div>
-
-    </div>
-
-    <div class="fcard" id="card-d49e49c8-e41" data-sev="high" data-phase="auth">
-
-      <div class="fcard-header bl-high" onclick="toggleCard('card-d49e49c8-e41')">
-        <span class="sev-dot dot-high"></span>
-        <span class="sev-label">HIGH</span>
-        <span class="fcard-title">Token Predictability: Low Entropy Variance Across Token Set</span>
-        <span class="fcard-phase">AUTH</span>
-        <span class="fcard-chevron" id="chev-card-d49e49c8-e41">&#9660;</span>
-      </div>
-
-      <div class="fcard-body" id="body-card-d49e49c8-e41">
-
-        <div class="fsection">
-          <div class="fsection-label">Description</div>
-          <div class="fdescription">Entropy variance across 5 tokens is 0.0004. Tokens may be generated from a weak PRNG with predictable output.</div>
-          
-        <a class="cwe-link" href="https://cwe.mitre.org/data/definitions/335.html" target="_blank">CWE-335 &nearr;</a>
-          
-        <div class="tag-list"><span class="tag">token</span><span class="tag">predictability</span><span class="tag">entropy</span></div>
-        </div>
-        
-      <div class="fsection">
-        <div class="fsection-label">Evidence</div>
-        <pre>{
-  &quot;variance&quot;: 0.00039,
-  &quot;entropies&quot;: [
-    5.7,
-    5.7,
-    5.664,
-    5.664,
-    5.664
-  ],
-  &quot;sample_tokens&quot;: [
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;
-  ],
-  &quot;sample_size&quot;: 5
-}</pre>
-      </div>
-        
-        
-        
-      <div class="fsection">
-        <div class="fsection-label">Remediation</div>
-        <div class="fremediation">Use OS-level CSPRNG (secrets module, /dev/urandom).</div>
-      </div>
-
-      </div>
-
-    </div>
-
-    <div class="fcard" id="card-b13d1ca6-a0f" data-sev="medium" data-phase="auth">
-
-      <div class="fcard-header bl-medium" onclick="toggleCard('card-b13d1ca6-a0f')">
-        <span class="sev-dot dot-medium"></span>
-        <span class="sev-label">MEDIUM</span>
-        <span class="fcard-title">Token Predictability: JWT Missing Expiration (exp)</span>
-        <span class="fcard-phase">AUTH</span>
-        <span class="fcard-chevron" id="chev-card-b13d1ca6-a0f">&#9660;</span>
-      </div>
-
-      <div class="fcard-body" id="body-card-b13d1ca6-a0f">
-
-        <div class="fsection">
-          <div class="fsection-label">Description</div>
-          <div class="fdescription">Token has no expiry. Stolen tokens remain valid indefinitely.</div>
-          
-        <a class="cwe-link" href="https://cwe.mitre.org/data/definitions/613.html" target="_blank">CWE-613 &nearr;</a>
-          
-        <div class="tag-list"><span class="tag">token</span><span class="tag">predictability</span><span class="tag">entropy</span></div>
-        </div>
-        
-      <div class="fsection">
-        <div class="fsection-label">Evidence</div>
-        <pre>{
-  &quot;payload_keys&quot;: [
-    &quot;status&quot;,
-    &quot;data&quot;,
-    &quot;iat&quot;
-  ],
-  &quot;sample_tokens&quot;: [
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
-    &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;
-  ],
-  &quot;sample_size&quot;: 5
-}</pre>
-      </div>
-        
-        
-        
-      <div class="fsection">
-        <div class="fsection-label">Remediation</div>
-        <div class="fremediation">Always set a short exp claim (≤15 min for sensitive flows).</div>
-      </div>
-
-      </div>
-
-    </div>
+  <div class="empty-state">
+    No findings &mdash; scan clean or no checks configured.
   </div>
 
 
   <div class="rpt-footer">
     <div class="rpt-footer-logo">SPECTER</div>
     <div class="rpt-footer-meta">
-      3 findings &nbsp;&middot;&nbsp; 2026-05-09T10:30:41.738316Z &nbsp;&middot;&nbsp; v1.0.0
+      0 findings &nbsp;&middot;&nbsp; 2026-05-09T05:18:36.952744Z &nbsp;&middot;&nbsp; v1.0.0
     </div>
   </div>
 

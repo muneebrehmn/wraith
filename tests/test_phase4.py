@@ -1,5 +1,5 @@
 """
-specter/tests/test_phase4.py
+wraith/tests/test_phase4.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 4 tests — SessionAnalyzer (no real network)
 Run: python -m pytest tests/test_phase4.py -v

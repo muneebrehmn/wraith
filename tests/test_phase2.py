@@ -1,5 +1,5 @@
 """
-specter/tests/test_phase2.py
+wraith/tests/test_phase2.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 2 tests — AuthTester
 
@@ -17,7 +17,7 @@ import hashlib
 from typing import Dict, Optional
 from unittest.mock import MagicMock
 
-from utils.http_client import HttpRequest, HttpResponse, SpecterSession
+from utils.http_client import HttpRequest, HttpResponse, WraithSession
 from core.auth_tester import AuthTester, AuthTarget
 from models.findings import Severity
 
@@ -61,7 +61,7 @@ def mock_response(
 
 class MockSession:
     """
-    Replaces SpecterSession during tests.
+    Replaces WraithSession during tests.
     Scripts responses via a dict keyed on (method, url_fragment).
     Falls back to a default 200 response.
     """
@@ -228,7 +228,7 @@ class TestResetReuse:
         target = _make_target(
             reset_endpoint         = "/forgot-password",
             reset_confirm_endpoint = "/reset-password",
-            reset_test_email       = "test@specter.local",
+            reset_test_email       = "test@wraith.local",
             token_extractor        = lambda resp: (
                 resp.json().get("reset_token") if resp.is_json else None
             ),

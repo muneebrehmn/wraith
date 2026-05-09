@@ -7,7 +7,7 @@
 
 ## What It Does
 
-Specter automates the class of vulnerabilities that automated scanners consistently miss — the ones that require understanding application flow, not just pattern matching:
+Wraith automates the class of vulnerabilities that automated scanners consistently miss — the ones that require understanding application flow, not just pattern matching:
 
 | Phase | Attack Vectors |
 |-------|---------------|
@@ -20,7 +20,7 @@ Specter automates the class of vulnerabilities that automated scanners consisten
 ## Architecture
 
 ```
-specter/
+wraith/
 ├── core/
 │   ├── engine.py            # Orchestrator + CLI entry point
 │   ├── auth_tester.py       # Phase 2 — authentication attacks
@@ -45,8 +45,8 @@ The HTTP layer is **dual-mode**: in standalone mode it uses `requests`; loaded a
 **Requirements:** Python 3.8+, Kali Linux (or any Linux), optionally Burp Suite Community/Pro.
 
 ```bash
-git clone https://github.com/yourhandle/specter.git
-cd specter
+git clone https://github.com/muneebrehmn/wraith.git
+cd wraith
 pip install -r requirements.txt
 ```
 
@@ -121,7 +121,7 @@ print(f"{len(findings)} findings")
 1. Open Burp Suite → **Extender → Extensions → Add**
 2. Extension type: **Python**
 3. Select `burp_extension/authlogic_burp.py`
-4. A **Specter** tab appears in Burp's main tab bar
+4. A **Wraith** tab appears in Burp's main tab bar
 
 All scan traffic is routed through Burp's engine — every probe appears in **Proxy history** and can be sent to **Repeater** for manual follow-up.
 
@@ -205,7 +205,7 @@ Only `requests` for standalone mode. The token analyzer, entropy calculations, a
 
 ---
 
-## Extending Specter
+## Extending Wraith
 
 Add a new check to any phase by following the pattern:
 

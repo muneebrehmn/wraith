@@ -1,5 +1,5 @@
 """
-specter/core/session_analyzer.py
+wraith/core/session_analyzer.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 4 – Session Analyzer
 

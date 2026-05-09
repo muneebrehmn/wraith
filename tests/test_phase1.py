@@ -1,6 +1,6 @@
 """
 tests/test_phase1.py
-Specter – Phase 1 tests (no network required)
+Wraith – Phase 1 tests (no network required)
 Run: python -m pytest tests/test_phase1.py -v
 """
 

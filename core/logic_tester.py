@@ -1,5 +1,5 @@
 """
-specter/core/logic_tester.py
+wraith/core/logic_tester.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 3 – Business Logic Tester
 

@@ -1,5 +1,5 @@
 """
-specter/tests/test_phase5.py
+wraith/tests/test_phase5.py
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Phase 5 tests — Reporter
 Run: python -m pytest tests/test_phase5.py -v
@@ -66,7 +66,7 @@ class TestJsonReport:
         return Reporter(
             findings    = findings if findings is not None else sample_findings(),
             target_url  = "https://target.example.com",
-            scan_name   = "Specter Test Scan",
+            scan_name   = "Wraith Test Scan",
             output_dir  = tmpdir or tempfile.mkdtemp(),
         )
 
@@ -168,7 +168,7 @@ class TestHtmlReport:
         r = Reporter(
             findings   = findings if findings is not None else sample_findings(),
             target_url = "https://target.example.com",
-            scan_name  = "Specter HTML Test",
+            scan_name  = "Wraith HTML Test",
             output_dir = tmpdir,
         )
         path = r.write_html()
@@ -302,7 +302,7 @@ def generate_sample_report(out_dir: str = "./reports"):
     r = Reporter(
         findings        = findings,
         target_url      = "https://target.example.com",
-        scan_name       = "Specter — Sample Engagement Report",
+        scan_name       = "Wraith — Sample Engagement Report",
         output_dir      = out_dir,
         scanner_version = "1.0.0",
     )
