@@ -84,12 +84,12 @@ python -m core.engine \
   --profile-endpoint /api/user/profile
 ```
 
-Reports are written to `./reports/` by default — one `specter_report.json` and one `specter_report.html`.
+Reports are written to `./reports/` by default — one `wraith_report.json` and one `wraith_report.html`.
 
 ### Programmatic API
 
 ```python
-from core.engine import SpecterEngine, ScanConfig
+from core.engine import WraithEngine, ScanConfig
 from core.logic_tester import WorkflowStep
 
 config = ScanConfig(
@@ -103,7 +103,7 @@ config = ScanConfig(
     phases             = ["auth", "session"],
 )
 
-engine = SpecterEngine(config)
+engine = WraithEngine(config)
 
 # Optionally inject multi-step workflow for logic checks
 engine.set_workflow([
@@ -136,7 +136,7 @@ All scan traffic is routed through Burp's engine — every probe appears in **Pr
   MEDIUM    █     1
 ```
 
-### JSON report (`specter_report.json`)
+### JSON report (`wraith_report.json`)
 ```json
 {
   "meta":    { "scanner": "Wraith", "version": "1.0.0", "target_url": "...", "timestamp": "..." },
